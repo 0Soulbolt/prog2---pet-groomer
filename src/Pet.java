@@ -1,29 +1,34 @@
 public abstract class Pet {
+    private int id;
     private String name;
+    private  int age; // Years
+    private double weight; //KG
     private String breed;
-    private  int age;
+    private String owner;
     private String notes;
 
-    public Pet(String name, String breed, int age, String notes){
+
+    public Pet(int id, String name, int age, double weight, String breed, String owner, String notes) {
+        this.id = id;
         this.name = name;
-        this.breed = breed;
         this.age = age;
+        this.weight = weight;
+        this.breed = breed;
+        this.owner = owner;
         this.notes = notes;
     }
 
-    public String getName() {
-        return  name;
-    }
+    public int getId() { return id; }
 
-    public String getBreed() {
-        return breed;
-    }
+    public String getName() { return  name; }
 
-    public int getAge() {
-        return age;
-    }
+    public int getAge() { return age; }
 
-    public String getNotes() {
-        return notes;
-    }
+    public double getWeight() { return weight; }
+
+    public String getBreed() { return breed; }
+
+    public String getOwner() { return owner; }
+
+    public String getNotes() { return notes; }
 }

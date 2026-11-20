@@ -1,6 +1,6 @@
 public abstract class Dog extends Pet{
-    public Dog(String name, String breed, int age, String notes) {
-        super(name, breed, age, notes);
+    public Dog(int id, String name, int age, double weight, String breed, String owner, String notes) {
+        super(id, name, age, weight, breed, owner, notes);
     }
 
 }
