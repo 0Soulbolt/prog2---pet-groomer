@@ -3,10 +3,10 @@ package domain;
 import java.util.List;
 
 public abstract class Dog extends Pet {
-    private static final int baseDuration = 60;
-    private static final int baseFee = 40;
+    private static final int baseDuration = 210;
+    private static final int baseFee = 70;
 
-    public Dog(String name, int age, double weight, String breed, String owner, List<Notes> notes) {
+    public Dog(String name, int age, double weight, String breed, String owner, Notes notes) {
         super(name, age, weight, breed, owner, notes);
     }
 
@@ -15,7 +15,7 @@ public abstract class Dog extends Pet {
 
     @Override
     public int estimateExtraDuration() {
-        int extra = getWeight() > 6.0 ? 10 : 0 + getWeight() < 3.0 ? -10 : 0 + getAge() < 0.25 ? -10 : 0 + getAge() > 1.5 ? 10 : 0;
+        int extra = (getWeight() > 6.0 ? 10 : 0) + (getWeight() < 3.0 ? -10 : 0) + (getAge() < 0.25 ? -10 : 0) + (getAge() > 1.5 ? 10 : 0) + (getNotes().extraMinutes());
 
         return extra;
     }

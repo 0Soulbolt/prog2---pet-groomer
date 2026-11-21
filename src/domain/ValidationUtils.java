@@ -17,5 +17,11 @@ public final class ValidationUtils {
         return value;
     }
 
+    public static boolean requireBool(boolean value, String fieldName) {
+        if (value != true || value != false) {
+            throw new IllegalArgumentException(fieldName + " cannot be null");
+        }
+        return value;
+    }
 
 }
