@@ -22,8 +22,7 @@ public abstract class Dog extends Pet {
 
     @Override
     public double calculateFeeMultiplier() {
-        double multiplier = getWeight() > 20.0 ? 1.25 : 1.0;
-
+        double multiplier = getWeight() < 10 ? 0.8 : 1 + getWeight() > 35.0 ? 1.3 : 1 + getAge() < 0.5 ? 0.8 : 1 + getAge() > 8 ? 1.2 : 1;
 
         return multiplier;
     }
