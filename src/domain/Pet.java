@@ -11,13 +11,13 @@ public abstract class Pet {
     private String owner;
     private List<Notes> notes;
 
-    public Pet(String name, int age, double weight, String breed, String owner, List<Notes> notes) {
+    public Pet(String name, double age, double weight, String breed, String owner, List<Notes> notes) {
         this.id = generateNextId();
-        this.name = name;
-        this.age = age;
-        this.weight = weight;
-        this.breed = breed;
-        this.owner = owner;
+        setName(name);
+        setAge(age);
+        setWeight(weight);
+        setBreed(breed);
+        setOwner(owner);
         this.notes = notes;
     }
 
@@ -36,6 +36,22 @@ public abstract class Pet {
 
     private static synchronized int generateNextId() {
         return nextId++;
+    }
+
+    public void setName(String name) {
+        this.name = ValidationUtils.requireNonBlank(name, "name");
+    }
+    public void setAge(double age) {
+        this.age = ValidationUtils.requirePos(age, "age");
+    }
+    public void setWeight(double weight) {
+        this.weight = ValidationUtils.requirePos(weight, "weight");
+    }
+    public void setBreed(String breed) {
+        this.breed = ValidationUtils.requireNonBlank(breed, "breed");
+    }
+    public void setOwner(String owner) {
+        this.owner = ValidationUtils.requireNonBlank(owner, "owner");
     }
 
 }
