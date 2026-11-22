@@ -1,6 +1,6 @@
 package client;
 
-import domain.GroomingService;
+import domain.Service;
 import domain.Services;
 
 import java.util.ArrayList;
@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class ServicePicker {
     private final Scanner scanner;
-    public static List<GroomingService> selectedServices;
+    public static List<Service> selectedServices;
 
     public ServicePicker(Scanner scanner) {
         if (scanner == null) {
@@ -18,14 +18,14 @@ public class ServicePicker {
         this.scanner = scanner;
         this.selectedServices = selectServices();
     }
-    public List<GroomingService> selectServices() {
-        List<GroomingService> catalog = Services.Services();
-        List<GroomingService> selectedServices = new ArrayList<>();
+    public List<Service> selectServices() {
+        List<Service> catalog = Services.Services();
+        List<Service> selectedServices = new ArrayList<>();
 
         System.out.println("Elérhető szolgáltatások: ");
         for (int i = 0; i < catalog.size(); i++) {
-            GroomingService s = catalog.get(i);
-            System.out.println((i+1) + ". " + GroomingService.getServiceName() + " (" + s.getServiceDuration() + " perc)");
+            Service s = catalog.get(i);
+            System.out.println((i+1) + ". " + Service.getServiceName() + " (" + s.getServiceDuration() + " perc)");
         }
 
         System.out.print("Add meg a kívánt szolgáltatások sorszámát vesszővel elválasztva: ");
@@ -39,7 +39,7 @@ public class ServicePicker {
             try {
                 int index = Integer.parseInt(trimmed) - 1;
                 if (index >= 0 && index < catalog.size()) {
-                    GroomingService chosen = catalog.get(index);
+                    Service chosen = catalog.get(index);
                     if (!selectedServices.contains(chosen)) {
                         selectedServices.add(chosen);
                     }

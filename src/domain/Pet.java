@@ -22,6 +22,7 @@ public abstract class Pet {
         setOwner(owner);
     }
 
+    public abstract int getBaseDuration();
     public abstract int getBaseFee();
 
     //public int getPetId() { return id; }
@@ -34,7 +35,6 @@ public abstract class Pet {
     public List<Note> getNotes() { return notes; }
 
     public abstract double calculateFeeMultiplier();
-
     public abstract int estimateExtraDuration(); //minutes
 
     private static synchronized int generateNextId() {

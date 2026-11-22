@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class PetAdministrator {
-    private final Scanner scanner;
+    private static Scanner scanner;
     public static List<Note> petnotes;
 
     public PetAdministrator(Scanner scanner) {
@@ -18,7 +18,7 @@ public class PetAdministrator {
         this.petnotes = askNotes();
     }
 
-    private Pet readPet() {
+    public static Pet readPet() {
         System.out.println("Kérem adja meg a kisállata következő adatait: ");
         int type = askPetType();
         String name = askPetName();
@@ -39,7 +39,7 @@ public class PetAdministrator {
         return null;
     }
 
-    private int askPetType() {
+    private static int askPetType() {
             System.out.println("Milyen kisállatról van szó?");
             System.out.println("1. Kutya");
             System.out.println("2. Macska");
@@ -53,7 +53,7 @@ public class PetAdministrator {
             return type;
     }
 
-    private String askPetName() {
+    private static String askPetName() {
         String name = null;
         System.out.println("Hogy hívják a kisállatot?");
         name = scanner.nextLine().trim();
@@ -65,7 +65,7 @@ public class PetAdministrator {
         return name;
     }
 
-    private boolean askPetGender() {
+    private static boolean askPetGender() {
             System.out.println("Mi a neme?");
             System.out.println("F - Nő");
             System.out.println("M - Férfi");
@@ -82,7 +82,7 @@ public class PetAdministrator {
         return genderbool;
     }
 
-    private double askPetAge() {
+    private static double askPetAge() {
         System.out.print("Milyen idős a kisállat: ");
         double age = scanner.nextDouble();
 
@@ -94,7 +94,7 @@ public class PetAdministrator {
         return age;
     }
 
-    private double askWeight() {
+    private static double askWeight() {
         System.out.print("Hány kilós: ");
         Double weight = scanner.nextDouble();
             if (weight <= 0 || weight == null) {
@@ -104,7 +104,7 @@ public class PetAdministrator {
         return weight;
     }
 
-    private String askPetBreed() {
+    private static String askPetBreed() {
         String breed = null;
         System.out.println("Milyen fajta a kisállat? (Ha nem tudja írja, hogy nem tudom)");
         breed = scanner.nextLine().trim();
@@ -116,7 +116,7 @@ public class PetAdministrator {
         return breed;
     }
 
-    private String askOwnerName() {
+    private static String askOwnerName() {
         String name = null;
         System.out.println("Hogy hívják önt?");
         name = scanner.nextLine().trim();
@@ -128,7 +128,7 @@ public class PetAdministrator {
         return name;
     }
 
-    private List<Note> askNotes() {
+    private static List<Note> askNotes() {
         List<Note> PetNotes = new ArrayList<Note>();
         System.out.println("Válassza ki mely tulajdonságok igazak a kisállatára: (1/0)");
         for (int i = 0; i < Notes.Notes().size(); i++) {

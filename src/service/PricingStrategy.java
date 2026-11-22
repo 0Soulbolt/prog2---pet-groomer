@@ -1,11 +1,12 @@
 package service;
 
-import domain.GroomingService;
+import domain.Groomer;
+import domain.Service;
 import domain.Note;
 import domain.Pet;
 
 import java.util.List;
 
 public interface PricingStrategy {
-    int calculatePrice(List<GroomingService> services, List<Note> notes, Pet pet);
+    double calculatePrice(List<Service> services, List<Note> notes, Pet pet, Groomer groomer);
 }

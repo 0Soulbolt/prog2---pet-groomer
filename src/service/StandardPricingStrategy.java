@@ -2,7 +2,8 @@ package service;
 
 import client.PetAdministrator;
 import client.ServicePicker;
-import domain.GroomingService;
+import domain.Groomer;
+import domain.Service;
 import domain.Note;
 import domain.Pet;
 
@@ -10,15 +11,15 @@ import java.util.List;
 
 public class StandardPricingStrategy implements PricingStrategy{
     @Override
-    public int calculatePrice(List<GroomingService> services, List<Note> notes, Pet pet) {
-        int total = pet.getBaseFee();
+    public double calculatePrice(List<Service> services, List<Note> notes, Pet pet, Groomer groomer) {
+        double total = pet.getBaseFee();
 
-        for (GroomingService service : ServicePicker.selectedServices) {
-            total += GroomingService.getServicePrice();
+        for (Service service : ServicePicker.selectedServices) {
+            total += (Service.getServicePrice() + (Service.getServiceDuration() * groomer.getHourlyRate())) * pet.calculateFeeMultiplier();
         }
 
         for (Note note : PetAdministrator.petnotes) {
-            total+= Note.getDurationExtra()/5;
+            total+= (Note.getDurationExtra() * groomer.getHourlyRate());
         }
 
         return total;

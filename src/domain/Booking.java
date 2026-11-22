@@ -1,9 +1,7 @@
 package domain;
 
-import domain.Groomer;
-import domain.GroomingService;
-import domain.Pet;
-import domain.BookingStatus;
+import client.PetAdministrator;
+import client.ServicePicker;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -15,12 +13,12 @@ public class Booking {
     private Groomer groomer;
     private LocalDateTime appointmentStart;
     private LocalDateTime appointmentEnd;
-    private List<GroomingService> services;
+    private List<Service> services;
     private int price;
-    //private BookingStatus status;
-    //private final int duration;
+    private BookingStatus status;
+    private final int duration;
 
-    public Booking( Pet pet, Groomer groomer, LocalDateTime appointmentStart, List<GroomingService> services) {
+    public Booking(Pet pet, Groomer groomer, LocalDateTime appointmentStart, List<Service> services) {
         this.id = generateNextId();
         if (pet == null) {
             throw new IllegalArgumentException("Pet cannot be null.");
@@ -28,9 +26,11 @@ public class Booking {
         if (groomer == null) {
             throw new IllegalArgumentException("Groomer cannot be null.");
         }
+        /*
         if (!groomer.getavailability()) {
             throw new IllegalStateException("Groomer is not available.");
         }
+        */
         if (appointmentStart == null) {
             throw new IllegalArgumentException("Start time cannot be null.");
         }
@@ -45,14 +45,14 @@ public class Booking {
         //this.services = chosenServices();
         this.price = price;
         //this.status = status;
-        //this.duration = calcDuration(this.services, this.pet);
+        this.duration = calcDuration(ServicePicker.selectedServices, PetAdministrator.petnotes, PetAdministrator.readPet() );
     }
 
     public int getBookingId() { return id; }
     public Pet getPet() { return pet; }
     public Groomer getGroomer() { return groomer; }
     public LocalDateTime getAppointment() { return appointmentStart; }
-    public List<GroomingService> getId() { return services; }
+    public List<Service> getId() { return services; }
     public int getPrice() { return price; }
     //public BookingStatus status() { return status; };
 
@@ -60,27 +60,18 @@ public class Booking {
         return nextId++;
     }
 
-    /*
-    public List<GroomingService> chosenServices() {
+    private static int calcDuration(List<Service> services, List<Note> notes, Pet pet) {
+        int total = pet.getBaseDuration();
 
-
+        for (Service service : ServicePicker.selectedServices) {
+            total += Service.getServiceDuration();
         }
+
+        for (Note note : PetAdministrator.petnotes) {
+            total+= Note.getDurationExtra();
+        }
+
+        total += pet.estimateExtraDuration();
+        return  total;
     }
-*/
-
-private static int calcDuration(List<GroomingService> services,List<Note> notes, Pet pet) {
-    int total = 0;
-    /*
-    for (int i = 0; i <Services.Services().size(); i++) {
-        total += GroomingService.getServiceDuration();
-    }
-
-    total += pet.estimateExtraDuration();
-    */
-     */
-
-    return  total;
-}
-
-
 }
