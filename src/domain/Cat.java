@@ -15,7 +15,7 @@ public class Cat extends Pet {
 
     @Override
     public int estimateExtraDuration() {
-        int extra = (getWeight() > 8.0 ? 10 : 0) + (getWeight() < 3.0 ? -10 : 0) + (getAge() < 0.25 ? -10 : 0) + (getAge() > 1.5 ? 10 : 0) + (getNotes().extraMinutes());
+        int extra = (getWeight() > 8.0 ? 10 : 0) + (getWeight() < 3.0 ? -10 : 0) + (getAge() < 0.25 ? -10 : 0) + (getAge() > 1.5 ? 10 : 0);
 
         return extra;
     }

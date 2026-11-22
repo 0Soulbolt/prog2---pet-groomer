@@ -20,4 +20,12 @@ public class Services {
                 .orElseThrow(() -> new IllegalArgumentException("Ismeretlen szolgáltatás: " + name));
     }
 
+    public int GroomingServiceDuration(List<GroomingService> services) {
+            int total = 0;
+            for (int i = 0; i < services.size(); i++) {
+                total += services.get(i).getServiceDuration();
+            }
+        return total;
+    }
+
 }

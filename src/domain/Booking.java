@@ -66,18 +66,21 @@ public class Booking {
 
         }
     }
+*/
 
-private static int calcDuration(List<GroomingService> services, Pet pet) {
+private static int calcDuration(List<GroomingService> services,List<Note> notes, Pet pet) {
     int total = 0;
-
+    /*
     for (int i = 0; i <Services.Services().size(); i++) {
         total += GroomingService.getServiceDuration();
     }
 
     total += pet.estimateExtraDuration();
+    */
+     */
 
     return  total;
 }
-*/
+
 
 }

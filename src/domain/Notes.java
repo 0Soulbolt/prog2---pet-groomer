@@ -38,6 +38,11 @@ public class Notes {
         return booleanFieldCount;
     }
 
-    //public String getName() { return Note.getName();}
-
+    public int petNotesDuration(List<Note> notes) {
+        int notesduration = 0;
+        for (int i = 0; i < notes.size(); i++) {
+            notesduration+=Note.getDurationExtra();
+        }
+        return notesduration;
+    }
 }

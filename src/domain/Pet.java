@@ -22,6 +22,8 @@ public abstract class Pet {
         setOwner(owner);
     }
 
+    public abstract int getBaseFee();
+
     //public int getPetId() { return id; }
 
     public String getName() { return  name; }

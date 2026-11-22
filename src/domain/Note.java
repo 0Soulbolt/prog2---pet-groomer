@@ -3,7 +3,7 @@ package domain;
 public class Note {
     private static String id;
     private static String name;
-    private int durationExtra;
+    private static int durationExtra;
 
     public Note(String id, String name, int durationExtra) {
         this.id = id;

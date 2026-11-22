@@ -4,7 +4,7 @@ public class GroomingService {
     //private final int id;
     private static String name;
     private static int duration;
-    private int price;
+    private static int price;
 
     public GroomingService(/*int id,*/ String name, int duration, int price) {
         //this.id = id;

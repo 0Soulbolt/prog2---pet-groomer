@@ -15,14 +15,14 @@ public class Dog extends Pet {
 
     @Override
     public int estimateExtraDuration() {
-        int extra = (getWeight() > 6.0 ? 10 : 0) + (getWeight() < 3.0 ? -10 : 0) + (getAge() < 0.25 ? -10 : 0) + (getAge() > 1.5 ? 10 : 0) + (getNotes().extraMinutes());
+        int extra = (getWeight() > 10 ? 10 : 0) + (getWeight() < 35 ? -10 : 0) + (getAge() < 0.5 ? -10 : 0) + (getAge() > 8 ? 10 : 0);
 
         return extra;
     }
 
     @Override
     public double calculateFeeMultiplier() {
-        double multiplier = getWeight() < 10 ? 0.8 : 1 + getWeight() > 35.0 ? 1.3 : 1 + getAge() < 0.5 ? 0.8 : 1 + getAge() > 8 ? 1.2 : 1;
+        double multiplier = getWeight() < 10 ? 0.8 : 1 + getWeight() > 35 ? 1.3 : 1 + getAge() < 0.5 ? 0.8 : 1 + getAge() > 8 ? 1.2 : 1;
 
         return multiplier;
     }
