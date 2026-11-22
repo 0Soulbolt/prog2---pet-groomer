@@ -5,22 +5,21 @@ public abstract class Pet {
     private static int id;
     private static int nextId = 1;
     private String name;
+    private boolean gender;
     private double age; // Years
     private double weight; //KG
     private String breed;
     private String owner;
-    private Notes notes;
+    private List<Note> notes;
 
-    public Pet(String name, double age, double weight, String breed, String owner, Notes notes) {
+    public Pet(String name, boolean gender, double age, double weight, String breed, String owner, List<Note> notes) {
         this.id = generateNextId();
         setName(name);
+        this.gender = gender;
         setAge(age);
         setWeight(weight);
         setBreed(breed);
         setOwner(owner);
-        this.notes = (notes != null )
-                ? notes
-                : new Notes(false, false, false, false, false, false, false, false, false, false , false , false , false , false, false);
     }
 
     //public int getPetId() { return id; }
@@ -30,7 +29,7 @@ public abstract class Pet {
     public double getWeight() { return weight; }
     public String getBreed() { return breed; }
     public String getOwner() { return owner; }
-    public Notes getNotes() { return notes; }
+    public List<Note> getNotes() { return notes; }
 
     public abstract double calculateFeeMultiplier();
 

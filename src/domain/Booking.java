@@ -17,8 +17,8 @@ public class Booking {
     private LocalDateTime appointmentEnd;
     private List<GroomingService> services;
     private int price;
-    private BookingStatus status;
-    private final int duration;
+    //private BookingStatus status;
+    //private final int duration;
 
     public Booking( Pet pet, Groomer groomer, LocalDateTime appointmentStart, List<GroomingService> services) {
         this.id = generateNextId();
@@ -42,10 +42,10 @@ public class Booking {
         this.groomer = groomer;
         this.appointmentStart = appointmentStart;
         this.appointmentEnd = appointmentEnd;
-        this.services = services;
+        //this.services = chosenServices();
         this.price = price;
-        this.status = status;
-        this.duration = calcDuration(this.services, this.pet);
+        //this.status = status;
+        //this.duration = calcDuration(this.services, this.pet);
     }
 
     public int getBookingId() { return id; }
@@ -54,22 +54,30 @@ public class Booking {
     public LocalDateTime getAppointment() { return appointmentStart; }
     public List<GroomingService> getId() { return services; }
     public int getPrice() { return price; }
-    public BookingStatus status() { return status; };
+    //public BookingStatus status() { return status; };
 
     private static synchronized int generateNextId() {
         return nextId++;
     }
 
-    private static int calcDuration(List<GroomingService> services, Pet pet) {
-        int total = 0;
+    /*
+    public List<GroomingService> chosenServices() {
 
-        for (GroomingService : services) {
-            total += service.getServiceDuration();
+
         }
-
-        total += pet.estimateExtraDuration();
-
-        return  total;
     }
+
+private static int calcDuration(List<GroomingService> services, Pet pet) {
+    int total = 0;
+
+    for (int i = 0; i <Services.Services().size(); i++) {
+        total += GroomingService.getServiceDuration();
+    }
+
+    total += pet.estimateExtraDuration();
+
+    return  total;
+}
+*/
 
 }

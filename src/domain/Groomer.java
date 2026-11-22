@@ -4,14 +4,13 @@ import java.awt.*;
 
 public class Groomer {
     private final int id;
-    private static int nextId;
     private String name;
     private List speciecatalogue;
     private double hourlyRate;
     private boolean availability;
 
-    public Groomer(String name, List speciecatalogue, double hourlyRate, boolean availability) {
-        this.id = generateNextId();
+    public Groomer(int id, String name, List speciecatalogue, double hourlyRate, boolean availability) {
+        this.id = id;
         this.name = name;
         this.speciecatalogue = speciecatalogue;
         this.hourlyRate = hourlyRate;
@@ -24,7 +23,4 @@ public class Groomer {
     public double getHourlyRate() { return hourlyRate; }
     public boolean getavailability() { return availability; }
 
-    private static synchronized int generateNextId() {
-        return nextId++;
-    }
 }
