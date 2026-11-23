@@ -1,6 +1,4 @@
-package domain;
-
-import java.awt.*;
+package domain.groomer;
 
 public class Groomer {
     private final int id;

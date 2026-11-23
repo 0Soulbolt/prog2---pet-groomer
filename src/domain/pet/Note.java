@@ -1,4 +1,4 @@
-package domain;
+package domain.pet;
 
 public class Note {
     private static String id;

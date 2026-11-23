@@ -1,7 +1,9 @@
 package client;
 
-import domain.Groomer;
+import domain.groomer.Groomer;
+import domain.groomer.Groomers;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class GroomerPicker {
@@ -14,5 +16,20 @@ public class GroomerPicker {
         this.scanner = scanner;
     }
 
-    public Groomer groomer
+    public Groomer selectGroomer(List<Groomer> groomers) {
+
+        System.out.println("Alábbi gondozóink érhetők el: ");
+        for (Groomer groomer : groomers) {
+            System.out.println("Név: " + groomer.getName() + ", Órabér: " + groomer.getHourlyRate());
+        }
+        System.out.println("Kérem válassza ki egyik gondozónk (Írja be az azonosítóját)");
+        int GroomerId = scanner.nextInt();
+        while (GroomerId > 0 && GroomerId < groomers.size()) {
+            System.out.println("Nem létező azonosító, kérem próbálja újra");
+            GroomerId = scanner.nextInt();
+        }
+
+        Groomer selectedGroomer = groomers.get(GroomerId-1);
+        return selectedGroomer;
+    }
 }

@@ -1,9 +1,9 @@
-package service;
+package strategy;
 
-import domain.Groomer;
-import domain.Service;
-import domain.Note;
-import domain.Pet;
+import domain.groomer.Groomer;
+import domain.booking.Service;
+import domain.pet.Note;
+import domain.pet.Pet;
 
 import java.util.List;
 

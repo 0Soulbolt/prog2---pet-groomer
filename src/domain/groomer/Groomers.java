@@ -1,4 +1,4 @@
-package domain;
+package domain.groomer;
 
 import java.util.List;
 

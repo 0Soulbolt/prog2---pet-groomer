@@ -1,7 +1,10 @@
-package domain;
+package domain.booking;
 
 import client.PetAdministrator;
 import client.ServicePicker;
+import domain.groomer.Groomer;
+import domain.pet.Note;
+import domain.pet.Pet;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -15,7 +18,7 @@ public class Booking {
     private LocalDateTime appointmentEnd;
     private List<Service> services;
     private int price;
-    private BookingStatus status;
+    //private BookingStatus status;
     private final int duration;
 
     public Booking(Pet pet, Groomer groomer, LocalDateTime appointmentStart, List<Service> services) {

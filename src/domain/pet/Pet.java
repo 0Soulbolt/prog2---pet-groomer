@@ -1,4 +1,6 @@
-package domain;
+package domain.pet;
+import domain.ValidationUtils;
+
 import java.util.List;
 
 public abstract class Pet {

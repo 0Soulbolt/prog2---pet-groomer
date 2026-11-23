@@ -1,7 +1,7 @@
 package client;
 
-import domain.Service;
-import domain.Services;
+import domain.booking.Service;
+import domain.booking.Services;
 
 import java.util.ArrayList;
 import java.util.List;

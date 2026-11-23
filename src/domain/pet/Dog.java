@@ -1,4 +1,4 @@
-package domain;
+package domain.pet;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package domain;
+package domain.booking;
 
 public class Service {
     //private final int id;

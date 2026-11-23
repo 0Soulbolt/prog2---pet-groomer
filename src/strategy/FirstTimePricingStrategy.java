@@ -1,21 +1,21 @@
-package service;
+package strategy;
 
 import client.PetAdministrator;
 import client.ServicePicker;
-import domain.Groomer;
-import domain.Service;
-import domain.Note;
-import domain.Pet;
+import domain.groomer.Groomer;
+import domain.booking.Service;
+import domain.pet.Note;
+import domain.pet.Pet;
 
 import java.util.List;
 
-public class LoyaltyPricingStrategy implements PricingStrategy{
+public class FirstTimePricingStrategy implements PricingStrategy{
     @Override
     public double calculatePrice(List<Service> services, List<Note> notes, Pet pet, Groomer groomer) {
-        double total = pet.getBaseFee();
+        double total = pet.getBaseFee() * 0.8  * pet.calculateFeeMultiplier();
 
         for (Service service : ServicePicker.selectedServices) {
-            total += (Service.getServicePrice() + (Service.getServiceDuration() * groomer.getHourlyRate())) * 0.8 * pet.calculateFeeMultiplier();
+            total += (Service.getServicePrice() + (Service.getServiceDuration() * groomer.getHourlyRate()));
         }
 
         for (Note note : PetAdministrator.petnotes) {

@@ -1,6 +1,6 @@
 package client;
 
-import domain.*;
+import domain.pet.*;
 
 import java.util.ArrayList;
 import java.util.List;
