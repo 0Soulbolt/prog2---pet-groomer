@@ -6,8 +6,8 @@ public class Cat extends Pet {
     private static final int baseDuration = 120;
     private static final int baseFee = 50;
 
-    public Cat(String name, boolean gender, double age, double weight, String breed, String owner, List<Note> notes) {
-        super(name, gender, age, weight, breed, owner, notes);
+    public Cat(String name, String gender, double age, double weight, String breed, List<Note> notes) {
+        super(name, gender, age, weight, breed, notes);
     }
 
     public int getBaseDuration() { return baseDuration; }

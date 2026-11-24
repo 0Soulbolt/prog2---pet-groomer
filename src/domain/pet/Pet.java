@@ -7,21 +7,19 @@ public abstract class Pet {
     private static int id;
     private static int nextId = 1;
     private String name;
-    private boolean gender;
+    private String gender;
     private double age; // Years
     private double weight; //KG
     private String breed;
-    private String owner;
     private List<Note> notes;
 
-    public Pet(String name, boolean gender, double age, double weight, String breed, String owner, List<Note> notes) {
+    public Pet(String name, String gender, double age, double weight, String breed, List<Note> notes) {
         this.id = generateNextId();
         setName(name);
         this.gender = gender;
         setAge(age);
         setWeight(weight);
         setBreed(breed);
-        setOwner(owner);
     }
 
     public abstract int getBaseDuration();
@@ -33,7 +31,7 @@ public abstract class Pet {
     public double getAge() { return age; }
     public double getWeight() { return weight; }
     public String getBreed() { return breed; }
-    public String getOwner() { return owner; }
+    //public String getOwner() { return owner; }
     public List<Note> getNotes() { return notes; }
 
     public abstract double calculateFeeMultiplier();
@@ -54,8 +52,5 @@ public abstract class Pet {
     }
     public void setBreed(String breed) {
         this.breed = ValidationUtils.requireNonBlank(breed, "breed");
-    }
-    public void setOwner(String owner) {
-        this.owner = ValidationUtils.requireNonBlank(owner, "owner");
     }
 }

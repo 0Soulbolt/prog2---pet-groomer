@@ -8,7 +8,7 @@ public class Login {
     private static Scanner scanner;
     private static Owner login;
 
-    public Owner Login() {
+    public static Owner Login(Scanner scanner) {
         System.out.println("=== Tulajdonosi bejelentkezés ===");
 
         System.out.print("Kérem jelentkezzen be:\nFelhasználónév: ");

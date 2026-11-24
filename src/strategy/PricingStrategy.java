@@ -1,7 +1,7 @@
 package strategy;
 
 import domain.groomer.Groomer;
-import domain.booking.Service;
+import domain.service.Service;
 import domain.pet.Note;
 import domain.pet.Pet;
 

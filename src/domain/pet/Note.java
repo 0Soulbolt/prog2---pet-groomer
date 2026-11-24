@@ -1,9 +1,9 @@
 package domain.pet;
 
 public class Note {
-    private static String id;
-    private static String name;
-    private static int durationExtra;
+    private String id;
+    private String name;
+    private int durationExtra;
 
     public Note(String id, String name, int durationExtra) {
         this.id = id;
@@ -12,6 +12,6 @@ public class Note {
     }
 
     public String getId() { return id; }
-    public static String getName() { return name; }
-    public static int getDurationExtra() { return durationExtra; }
+    public String getName() { return name; }
+    public int getDurationExtra() { return durationExtra; }
 }

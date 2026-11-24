@@ -22,14 +22,16 @@ public class Notes {
                 new Note("ExtraCare","Extra figyelmességet igényel", 30)
         );
     }
-    public static Note findByName(String name) {
+    /*
+    public Note findByName(String name) {
         return Notes().stream()
                 .filter(service -> Note.getName().equalsIgnoreCase(name))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("Ismeretlen tulajdonságnév: " + name));
     }
+    */
 
-    public static int fieldCount() {
+    public int fieldCount() {
         int booleanFieldCount = 0;
         for (java.lang.reflect.Field field : Notes.class.getDeclaredFields()) {
             if (field.getType() == boolean.class) {
@@ -42,7 +44,7 @@ public class Notes {
     public int petNotesDuration(List<Note> notes) {
         int notesduration = 0;
         for (int i = 0; i < notes.size(); i++) {
-            notesduration+=Note.getDurationExtra();
+            notesduration+=notes.get(i).getDurationExtra();
         }
         return notesduration;
     }

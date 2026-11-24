@@ -1,9 +1,9 @@
-package domain.booking;
+package domain.service;
 
 import java.util.List;
 
 public class Services {
-    public static List<Service> Services() {
+    public static List<Service> AvailableServices() {
         return List.of(
             new Service("Fürdetés és szárítás", 45,50),
             new Service("Karomvágás", 15,20),
@@ -11,12 +11,21 @@ public class Services {
             new Service("Teljes kozmetika / nyírás", 60,100)
         );
     }
-
-    public static Service findByName(String name) {
-        return Services().stream()
-                .filter(service -> Service.getServiceName().equalsIgnoreCase(name))
+/*
+    public Service findByName(String name) {
+        return AvailableServices().stream()
+                .filter(service -> AvailableServices().get().getServiceName().equalsIgnoreCase(name))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("Ismeretlen szolgáltatás: " + name));
+    }
+
+ */
+    public int ServicesPrice(List<Service> services) {
+        int total = 0;
+        for (Service service : services) {
+            total += service.getServicePrice();
+        }
+        return total;
     }
 
     public int GroomingServiceDuration(List<Service> services) {
