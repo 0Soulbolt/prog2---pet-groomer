@@ -7,6 +7,8 @@ import domain.owner.Owner;
 import domain.pet.Note;
 import domain.pet.Pet;
 import domain.service.Service;
+import strategy.FirstTimePricingStrategy;
+import strategy.PricingStrategy;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -20,32 +22,41 @@ public class Booking {
     private LocalDateTime appointmentStart;
     private LocalDateTime appointmentEnd;
     private List<Service> services;
-    private int price;
+    private double price;
     //private final int duration;
 
-    public Booking(Owner owner, Pet pet, Groomer groomer, LocalDateTime appointmentStart, List<Service> services) {
+    public Booking(Owner owner, Pet pet, Groomer groomer, LocalDateTime appointmentStart, List<Service> services, double price) {
         this.id = generateNextId();
         this.owner = owner;
         this.pet = pet;
         this.groomer = groomer;
         this.appointmentStart = appointmentStart;
         this.appointmentEnd = appointmentEnd;
-        //this.services = chosenServices();
+        this.services = services;
         this.price = price;
         //this.status = status;
         //this.duration = calcDuration(ServicePicker.selectServices, PetAdministrator.petnotes, PetAdministrator.readPet() );
     }
-
+    public Owner getOwner() { return owner; }
     public int getBookingId() { return id; }
     public Pet getPet() { return pet; }
     public Groomer getGroomer() { return groomer; }
     public LocalDateTime getAppointment() { return appointmentStart; }
     public List<Service> getId() { return services; }
-    public int getPrice() { return price; }
+    public double getPrice() {return price; }
 
     private synchronized int generateNextId() {
         return nextId++;
     }
+    /*
+    private double calculatePrice(int num) {
+        if (num > 8) {
+            return FirstTimePricingStrategy.calculatePrice(services, pet, pet.getNotes(), groomer);
+        }
+    }
+
+     */
+
 /*
     private static int calcDuration(List<Service> services, List<Note> notes, Pet pet) {
         int total = pet.getBaseDuration();

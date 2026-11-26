@@ -8,4 +8,8 @@ public class Owner {
         this.name = name;
         this.pword = pword;
     }
+
+    public String getOwnerName() { return name; }
+
+    public String getPword() { return pword; }
 }

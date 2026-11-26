@@ -1,6 +1,8 @@
 import client.CreateBooking;
 import client.Login;
 import domain.booking.Booking;
+import domain.booking.BookingFileReader;
+import domain.booking.BookingFileWriter;
 
 import java.util.Scanner;
 
@@ -9,8 +11,13 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
         CreateBooking createdBooking = new CreateBooking();
         Booking booking = createdBooking.MakeBooking();
+        if (booking != null) {
+            BookingFileWriter writer = new BookingFileWriter("bookings.txt");
+            writer.save(booking);
+        }
+        BookingFileReader reader = new BookingFileReader("bookings.txt");
+        reader.printAllBookings();
     }
 }

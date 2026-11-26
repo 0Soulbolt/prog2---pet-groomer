@@ -12,13 +12,16 @@ public class AskBookingDateTime {
 
         while (true) {
             System.out.print("Időpont (éééé-hh-nn óó:pp, pl. 2026-12-05 14:30): ");
-            String input = scanner.next().trim();
-
+            String input = scanner.nextLine().trim();
             try {
+                LocalDateTime dateTime = LocalDateTime.parse(input, formatter);
+                if (dateTime.isBefore(LocalDateTime.now())) {
+                    System.out.println("Nem lehet a múltban az időpont.");
+                    continue;
+                }
                 return LocalDateTime.parse(input, formatter);
             } catch (DateTimeParseException e) {
-                System.out.println("Érvénytelen formátum / Nem lehet a múltban az időpont.");
-                scanner.nextLine();
+                System.out.println("Érvénytelen formátum.");
             }
         }
     }

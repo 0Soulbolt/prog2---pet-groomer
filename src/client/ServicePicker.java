@@ -29,7 +29,7 @@ public class ServicePicker {
         }
 
         System.out.print("Add meg a kívánt szolgáltatások sorszámát vesszővel elválasztva: ");
-        String line = scanner.next();
+        String line = scanner.nextLine();
 
         for (String num : line.split(",")) {
             String trimmed = num.trim();
@@ -50,7 +50,7 @@ public class ServicePicker {
                 System.out.println("Nem szám, kihagyva: " + trimmed);
             }
         }
-
+        System.out.println("Sikeresen ki lett választva " + selectedServices.size() + " darab szolgáltatás.");
         return selectedServices;
     }
 

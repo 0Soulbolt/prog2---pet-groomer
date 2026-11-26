@@ -11,6 +11,10 @@ import java.util.List;
 
 public class StandardPricingStrategy implements PricingStrategy{
     @Override
+    public boolean appliesTo(int level) {
+        return level > 1 && level < 8;
+    }
+    @Override
     public double calculatePrice(List<Service> services, List<Note> notes, Pet pet, Groomer groomer) {
         double total = pet.getBaseFee() * pet.calculateFeeMultiplier();
 
