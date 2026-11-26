@@ -19,7 +19,9 @@ public abstract class Pet {
         this.gender = gender;
         setAge(age);
         setWeight(weight);
-        setBreed(breed);
+        this.breed = breed;
+        this.notes = notes;
+        //setBreed(breed);
     }
 
     public abstract int getBaseDuration();
@@ -50,7 +52,5 @@ public abstract class Pet {
     public void setWeight(double weight) {
         this.weight = ValidationUtils.requirePos(weight, "weight");
     }
-    public void setBreed(String breed) {
-        this.breed = ValidationUtils.requireNonBlank(breed, "breed");
-    }
+    //public void setBreed(String breed) { this.breed = ValidationUtils.requireNonBlank(breed, "breed"); }
 }

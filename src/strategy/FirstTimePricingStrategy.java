@@ -12,7 +12,7 @@ import java.util.List;
 public class FirstTimePricingStrategy implements PricingStrategy{
     @Override
     public boolean appliesTo(int level) {
-        return level < 1;
+        return level == 0;
     }
     @Override
     public double calculatePrice(List<Service> services, List<Note> notes, Pet pet, Groomer groomer) {

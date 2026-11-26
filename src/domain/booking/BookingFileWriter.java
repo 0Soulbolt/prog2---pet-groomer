@@ -1,5 +1,7 @@
 package domain.booking;
 
+import client.CreateBooking;
+
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -15,7 +17,7 @@ public class BookingFileWriter {
 
     public void save(Booking booking) {
         //String line = booking.toString() + System.lineSeparator();
-        String line = booking.getOwner().getOwnerName() + " " +booking.getOwner().getPword() + System.lineSeparator();
+        String line = booking.getOwner().getOwnerName() + " " + booking.getOwner().getPword() /*+ " " + booking.getPrice()*/ + System.lineSeparator();
         try {
             if (filePath.getParent() != null) {
                 Files.createDirectories(filePath.getParent());

@@ -37,17 +37,16 @@ public class CreateBooking {
         ServicePicker servicePicker = new ServicePicker(scanner);
         List<Service> services = servicePicker.selectedServices;
 
-        BookingFileReader reader = new BookingFileReader("booking.txt");
+        BookingFileReader reader = new BookingFileReader("bookings.txt");
         int level = reader.determinePricing(owner);
+        //System.out.println(level);
         StrategySelector selector = new StrategySelector(allStrategies);
         PricingStrategy chosenStrategy = selector.select(level);
 
 
         Booking booking = new Booking(owner, pet, groomer, appointmentStart, services, chosenStrategy.calculatePrice(services, pet.getNotes(), pet, groomer));
+        //System.out.println(chosenStrategy);
         scanner.close();
         return booking;
     }
-
-
 }
-c

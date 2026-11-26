@@ -42,8 +42,13 @@ public class BookingFileReader {
     public int determinePricing(Owner owner) {
         List<String> lines = readAllLines();
         int numOfBookings = 0;
+        //String expected = owner.getOwnerName() + " " + owner.getPword();
+        //System.out.println("KERESETT: [" + expected + "]");
+        String ownerPrefix = owner.getOwnerName() + " " + owner.getPword();
         for (String line : lines) {
-            if (line.equals(owner.getOwnerName()+ " " + owner.getPword())) {
+            //System.out.println("SOR A FÁJLBAN: [" + line + "]");
+            String trimmed = line.trim();
+            if (trimmed.contains(ownerPrefix) || trimmed.contains(ownerPrefix + " ") || trimmed.contains(ownerPrefix + ";")) {
                 numOfBookings++;
             }
         }

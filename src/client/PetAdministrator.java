@@ -128,19 +128,26 @@ public class PetAdministrator {
     }
 
     private String askPetBreed(Scanner scanner) {
-        String breed = null;
-        System.out.println("Milyen fajta a kisállat? (Nem kötelező)");
-        breed = scanner.nextLine().trim();
-
-        if (breed == null) {
+        System.out.println("Milyen fajta a kisállat? (Ha nem tudja, csak írjon be valamit)");
+        while (true) {
+            try {
+                String breed = scanner.nextLine().trim();
+                return breed;
+            } catch (IllegalArgumentException e) {
+                System.out.println("Érvénytelen fajta, próbálja újra");
+            }
+        }
+        /*
+        if (breed.isEmpty()) {
             System.out.println("Érvénytelen fajta, próbálja újra");
             askPetBreed(scanner);
         }
-        return breed;
+
+         */
     }
 
     private List<Note> askNotes(List<Note> notes, Scanner scanner) {
-        List<Note> PetNotes = new ArrayList<Note>();
+        List<Note> petnotes = new ArrayList<Note>();
         int ans = 3;
         System.out.println("Válassza ki mely tulajdonságok igazak a kisállatára: (1/0 - igen/nem)");
 
@@ -151,10 +158,13 @@ public class PetAdministrator {
                 ans = Integer.parseInt(anS);
             } catch (NumberFormatException e) {
                 System.out.println("Nem megfelelő bevitel");
-                i--;
+                if (i > 0) {
+                    i--;
+                }
             }
             if ( ans == 1 ) {
-                PetNotes.add(notes.get(i));
+                petnotes.add(notes.get(i));
+                System.out.println("Hozzáadva");
             }
             else if ( ans > 1 || ans < 0 ) {
                 System.out.println("Nem megfelelő válasz, próbálja újra");
@@ -162,6 +172,7 @@ public class PetAdministrator {
                 i--;
             }
         }
-        return PetNotes;
+        //System.out.println(petnotes.size());
+        return petnotes;
     }
 }
